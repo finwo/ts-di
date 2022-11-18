@@ -104,6 +104,9 @@ class PersistentUserAdapter extends UserRepository {
 // Alias the abstract to the implementation, usually done during the
 // configuration stage of your application.
 Container.set(UserRepository, Container.get(PersistentUserAdapter));
+
+// Logs 'true' to the console
+console.log(Container.get(UserRepository) instanceof PersistentUserAdapter);
 ```
 
 Or, if you want to be able to inject 3rd-party classes or text-based
