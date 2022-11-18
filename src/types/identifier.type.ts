@@ -4,5 +4,5 @@ import { Constructable         } from './constructable.type';
 export type Identifier<T = unknown> =
   | AbstractConstructable<T>
   | Constructable<T>
-  | Symbol
+  | symbol
   | string;

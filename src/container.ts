@@ -16,15 +16,15 @@ export class Container {
 
     // Unregistered identifier
     if (!descriptor) {
-      throw new Error(`No service has been registered for '${type}'`);
+      throw new Error(`No service has been registered for '${String(type)}'`);
     }
 
     // Known & pre-initialized identifier
     if (descriptor.value !== EMPTY_VALUE) return descriptor.value;
 
     // Must have a constructor
-    if (!descriptor.fn) throw new Error(`Missing constructor for service '${type}'`);
-    if (!descriptor.fn.prototype) throw new Error(`Constructor for service '${type}' is not constructable`);
+    if (!descriptor.fn) throw new Error(`Missing constructor for service '${String(type)}'`);
+    if (!descriptor.fn.prototype) throw new Error(`Constructor for service '${String(type)}' is not constructable`);
 
     // Construct with fetched params
     const paramTypes: Identifier[] = Reflect.getMetadata('design:paramtypes', descriptor.fn) || [];

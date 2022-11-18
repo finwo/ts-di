@@ -1,9 +1,10 @@
-import { Identifier } from "../types/identifier.type";
+import { Identifier } from '../types/identifier.type';
 
-export function Inject(type: Identifier): ParameterDecorator {
-  return (target: any, key: string | Symbol, index: number) => {
+// Allows injection of a known identifier into a constructor's parameters (like string keys)
+export function Inject(identifier: Identifier): ParameterDecorator {
+  return function(target: any, key: string | symbol, index: number) {
     const paramTypes: any[] = Reflect.getMetadata('design:paramtypes', target);
-    paramTypes[index] = type;
+    paramTypes[index] = identifier;
     Reflect.defineMetadata('design:paramtypes', paramTypes, target);
-  };
+  }
 };
