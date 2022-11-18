@@ -1,5 +1,6 @@
 import { Identifier } from './types/identifier.type';
 import { Constructable } from './types/constructable.type';
+import { EMPTY_VALUE } from './empty.const';
 
 export const map = new Map();
 
@@ -19,7 +20,7 @@ export class Container {
     }
 
     // Known & pre-initialized identifier
-    if (descriptor.value) return descriptor.value;
+    if (descriptor.value !== EMPTY_VALUE) return descriptor.value;
 
     // Must have a constructor
     if (!descriptor.fn) throw new Error(`Missing constructor for service '${type}'`);

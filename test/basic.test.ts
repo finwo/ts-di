@@ -2,6 +2,7 @@ import 'reflect-metadata';
 
 import tap = require('tap');
 import { Service, Container } from '../src';
+import { EMPTY_VALUE } from '../src/empty.const';
 
 // Required to test some edge-cases
 import { map } from '../src/container';
@@ -39,8 +40,11 @@ tap.ok(Container.get(ExampleRepository) instanceof ExampleAdapter, 'Abstract cla
 Container.set('pizza', 'calzone');
 tap.equal(Container.get('pizza'), 'calzone', 'Strings can be used as keys in both .get and .set');
 
-map.set('A', {});
+map.set('A', { value: EMPTY_VALUE });
 tap.throws(() => Container.get('A'), 'Fetching service with missing value & constructor throws an error');
 
-map.set('B', { fn: {} });
+map.set('B', { value: EMPTY_VALUE, fn: {} });
 tap.throws(() => Container.get('B'), 'Fetching service with missing value constructor prototype throws an error');
+
+Container.set('falsey', false);
+tap.equal(Container.get('falsey'), false, 'A falsey configured key must still be returned');
