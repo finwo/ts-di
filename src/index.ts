@@ -6,3 +6,4 @@ if (!Reflect || !(Reflect as any).getMetadata) {
 
 export { Container } from './container';
 export { Service   } from './decorators/service.decorator';
+export { Inject    } from './decorators/inject.decorator';
