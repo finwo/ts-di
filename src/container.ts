@@ -1,5 +1,4 @@
 import { Identifier } from './types/identifier.type';
-import { Constructable } from './types/constructable.type';
 import { EMPTY_VALUE } from './empty.const';
 
 export const map = new Map();

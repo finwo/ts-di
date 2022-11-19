@@ -6,5 +6,5 @@ export function Inject(identifier: Identifier): ParameterDecorator {
     const paramTypes: any[] = Reflect.getMetadata('design:paramtypes', target);
     paramTypes[index] = identifier;
     Reflect.defineMetadata('design:paramtypes', paramTypes, target);
-  }
-};
+  };
+}

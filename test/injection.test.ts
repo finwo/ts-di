@@ -9,7 +9,7 @@ class SubDependency {}
 @Service()
 class Dependency {
   constructor(
-    public sub: SubDependency
+    public sub: SubDependency,
   ) {}
 }
 
@@ -17,13 +17,13 @@ class Dependency {
 class MainService {
   constructor(
     @Inject('environment') public env: string,
-    public dep: Dependency
+    public dep: Dependency,
   ) {}
 }
 
 Container.set('environment', 'test');
 
-tap.ok(Container.get(MainService) instanceof MainService, 'MainService with dependency can be fetched using Container.get')
+tap.ok(Container.get(MainService) instanceof MainService, 'MainService with dependency can be fetched using Container.get');
 tap.ok(Container.get(MainService).dep instanceof Dependency, 'MainService.dep was injected correctly');
 tap.ok(Container.get(MainService).dep.sub instanceof SubDependency, 'MainService.dep.sub was injected correctly');
 tap.equal(Container.get(MainService).env, 'test', 'MainService.env was injected correctly');
