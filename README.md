@@ -1,7 +1,7 @@
 @finwo/di
 =========
 
-![license](https://img.shields.io/github/license/finwo/tiny-di)
+[![license](https://img.shields.io/github/license/finwo/tiny-di)](https://github.com/finwo/tiny-di/blob/main/LICENSE)
 [![npm version](https://img.shields.io/npm/v/@finwo/di)](https://npmjs.com/package/@finwo/di)
 
 @finwo/di is a
