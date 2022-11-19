@@ -17,12 +17,13 @@
     }
   },
   "scripts": {
-    "test": "npm run build && node_modules/.bin/tap --reporter-arg=--reporter=html 'lib/test/**/*.test.js'",
+    "test": "npm run linter && npm run build && node_modules/.bin/tap --reporter-arg=--reporter=html 'lib/test/**/*.test.js'",
     "clean": "rm -rf ./lib",
     "build": "npm run clean && npm run build:esm && npm run build:cjs && npm run build:test",
     "build:cjs": "tsc -p ./config/tsconfig.cjs.json",
     "build:esm": "tsc -p ./config/tsconfig.esm.json && mv lib/esm/index.js lib/esm/index.mjs",
     "build:test": "tsc -p ./config/tsconfig.test.json",
+    "linter": "eslint src",
     "postpublish": "PACKAGE_VERSION=$(cat package.json | grep \\\"version\\\" | head -1 | awk -F: '{print $2}' | sed 's/[\",]//g' | tr -d '[[:space:]]') && npm deprecate \"@finwo/di@<${PACKAGE_VERSION}\" \"Rolling release, please update to ${PACKAGE_VERSION}\""
   },
   "files": [
@@ -45,6 +46,9 @@
   "devDependencies": {
     "@types/node": "^18.11.9",
     "@types/tap": "^15.0.7",
+    "@typescript-eslint/eslint-plugin": "^5.43.0",
+    "@typescript-eslint/parser": "^5.43.0",
+    "eslint": "^8.28.0",
     "reflect-metadata": "^0.1.13",
     "tap": "^16.3.2",
     "ts-node": "^10.9.1",
