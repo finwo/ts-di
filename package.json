@@ -34,14 +34,14 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/finwo/tiny-di.git"
+    "url": "git+https://github.com/finwo/di.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/finwo/tiny-di/issues"
+    "url": "https://github.com/finwo/di/issues"
   },
-  "homepage": "https://github.com/finwo/tiny-di#readme",
+  "homepage": "https://github.com/finwo/di#readme",
   "devDependencies": {
     "@types/node": "^18.11.9",
     "@types/tap": "^15.0.7",
