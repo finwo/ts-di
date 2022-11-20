@@ -138,3 +138,19 @@ Container.set(Party, new Party());
 Container.get(TestService).print();
 // Shows "Environment: test" in the console
 ```
+
+The same instance of a got service is returned over multiple requests. Transient
+or one-off services are not yet supported
+
+```ts
+import { Container, Service } from '@finwo/di';
+
+@Service()
+class SomeService {}
+
+const firstCall = Container.get(SomeService);
+const secondCall = Container.get(SomeService);
+
+// Logs 'true' to the console
+console.log(firstCall === secondCall);
+```
