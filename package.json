@@ -37,7 +37,7 @@
     "type": "git",
     "url": "git+https://github.com/finwo/di.git"
   },
-  "author": "",
+  "author": "Robin Bron <robin@finwo.nl>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/finwo/di/issues"
