@@ -21,7 +21,7 @@
     "clean": "rm -rf ./lib",
     "build": "npm run clean && npm run build:esm && npm run build:cjs && npm run build:test",
     "build:cjs": "tsc -p ./config/tsconfig.cjs.json",
-    "build:esm": "tsc -p ./config/tsconfig.esm.json && mv lib/esm/index.js lib/esm/index.mjs",
+    "build:esm": "tsc -p ./config/tsconfig.esm.json && mv lib/esm/index.js lib/esm/index.mjs && mv lib/esm/index.js.map lib/esm/index.mjs.map",
     "build:test": "tsc -p ./config/tsconfig.test.json",
     "linter": "eslint src",
     "postpublish": "PACKAGE_VERSION=$(cat package.json | grep \\\"version\\\" | head -1 | awk -F: '{print $2}' | sed 's/[\",]//g' | tr -d '[[:space:]]') && npm deprecate \"@finwo/di@<${PACKAGE_VERSION}\" \"Rolling release, please update to ${PACKAGE_VERSION}\""
