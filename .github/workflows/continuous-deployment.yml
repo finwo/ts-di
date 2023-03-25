@@ -1,7 +1,9 @@
 name: CD
+
 on:
   release:
     types: [created]
+
 jobs:
   publish:
     name: Publish to NPM
