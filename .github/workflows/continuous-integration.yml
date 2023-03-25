@@ -1,21 +1,28 @@
 name: CI
-on: [push, pull_request]
+on:
+  pull_request: true
+  push:
+    branches:
+      - '!main'
+
 jobs:
+
   checks:
     name: Linters
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - uses: actions/setup-node@v2
         with:
           node-version: 'lts/*'
       - run: npm ci --ignore-scripts
       - run: npm run linter
+
   tests:
     name: Tests
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - uses: actions/setup-node@v2
         with:
           node-version: 'lts/*'
@@ -23,11 +30,12 @@ jobs:
       - run: npm run test
       # - run: npm install codecov -g
       # - run: codecov -f ./coverage/clover.xml -t ${{ secrets.CODECOV_TOKEN }}
+
   build:
     name: Build
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - uses: actions/setup-node@v2
         with:
             node-version: 'lts/*'
