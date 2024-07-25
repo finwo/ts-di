@@ -2,11 +2,17 @@ import { Identifier } from './types/identifier.type';
 import { EMPTY_VALUE } from './empty.const';
 
 export const map = new Map();
+const onDefine = new Map();
 
 export class Container {
 
   static set<T = unknown>(type: Identifier<T>, value: any): Container {
     map.set(type, { type, value });
+    if (onDefine.has(type)) {
+      const callbacks = onDefine.get(type);
+      onDefine.delete(type);
+      callbacks.forEach((callback: ()=>any) => callback());
+    }
     return this;
   }
 
@@ -31,6 +37,15 @@ export class Container {
 
     // Return what we just constructor
     return descriptor.value;
+  }
+
+  static whenDefined<T = unknown>(type: Identifier<T>): Promise<void> {
+    if (map.has(type)) return Promise.resolve();
+    return new Promise(resolve => {
+      const callbacks = onDefine.get(type) || [];
+      callbacks.push(resolve);
+      onDefine.set(type, callbacks);
+    });
   }
 
 }
