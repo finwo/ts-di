@@ -1,6 +1,6 @@
 {
   "name": "@finwo/di",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Decorator-based typescript dependency injection library",
   "main": "./lib/cjs/index.js",
   "types": "./lib/cjs/index.d.ts",
