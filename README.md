@@ -14,6 +14,12 @@ Main features include:
 - constructor-based injection
 - singleton services
 
+This package makes use of decorators and decorator metadata using the
+[reflect-metadata][npm:reflect-metadata:url] package, which requires enabling
+experimental decorators and emitting decorator metadata. It is not compatible
+with the TS5 stage 3 decorators
+[and this is not the only library affected](https://github.com/microsoft/tsyringe/issues/225).
+
 ## Installation
 
 To start using @finwo/di, install the required packages via NPM:
