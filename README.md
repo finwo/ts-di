@@ -28,8 +28,8 @@ To start using @finwo/di, install the required packages via NPM:
 npm install --save @finwo/di reflect-metadata
 ```
 
-Import the [reflect-metadata](https://npmjs.com/package/reflect-metadata)
-package at the **first line** of your application:
+Import the [reflect-metadata][npm:reflect-metadata:url] package at the
+**first line** of your application:
 
 ```ts
 import 'reflect-metadata';
@@ -160,3 +160,5 @@ const secondCall = Container.get(SomeService);
 // Logs 'true' to the console
 console.log(firstCall === secondCall);
 ```
+
+[npm:reflect-metadata:url]: https://npmjs.com/package/reflect-metadata
